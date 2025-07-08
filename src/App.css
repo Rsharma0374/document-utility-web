@@ -40,3 +40,10 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Custom responsive class for tall or wide screens */
+@media (min-width: 1000px) and (min-height: 1500px), (min-height: 1500px) {
+  .tall-or-wide\:grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}

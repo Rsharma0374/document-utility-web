@@ -57,7 +57,7 @@ export default function PdfUnlock() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4 relative w-full">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-2 sm:px-6 py-6">
       {/* Home button in top left */}
       <button
         className="absolute top-4 left-4 flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition shadow"
@@ -69,7 +69,7 @@ export default function PdfUnlock() {
       </button>
       <h2 className="text-2xl font-bold mb-4">Unlock PDF</h2>
       <form
-        className="w-full max-w-md bg-white rounded-lg shadow-md p-6 flex flex-col gap-4"
+        className="w-full max-w-md bg-white rounded-lg shadow-md p-6 flex flex-col gap-4 tall-or-wide:grid-cols-1"
         onSubmit={handleSubmit}
       >
         <label className="block text-sm font-medium">Select PDF File</label>
