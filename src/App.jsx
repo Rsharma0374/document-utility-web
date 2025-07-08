@@ -5,6 +5,7 @@ import './index.css';
 import { useCallback } from 'react';
 import PdfLock from './components/PdfLock';
 import PdfUnlock from './components/PdfUnlock';
+import Base64ToPdf from './components/Base64ToPdf';
 
 function MainGrid() {
   const navigate = useNavigate();
@@ -32,6 +33,13 @@ function MainGrid() {
         >
           <Unlock size={48} className="mb-4 text-green-600" />
           <span className="text-xl font-semibold">Unlock PDF</span>
+        </div>
+        <div
+          className="cursor-pointer bg-white rounded-lg shadow-md p-8 flex flex-col items-center hover:bg-yellow-50 transition"
+          onClick={() => navigate('/base64-to-pdf')}
+        >
+          <FileText size={48} className="mb-4 text-yellow-600" />
+          <span className="text-xl font-semibold">Base64 to PDF</span>
         </div>
       </div>
     </div>
@@ -77,6 +85,7 @@ function App() {
         <Route path="/" element={<MainGrid />} />
         <Route path="/lock" element={<PdfLock />} />
         <Route path="/unlock" element={<PdfUnlock />} />
+        <Route path="/base64-to-pdf" element={<Base64ToPdf />} />
       </Routes>
     </Router>
   );
