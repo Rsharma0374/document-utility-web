@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import { FileText, Lock, Unlock, Wrench, Image, Combine, Split, Minimize2 } from 'lucide-react';
+import { FileText, Lock, Unlock, Wrench, Image, Combine, Split, Minimize2, Coffee } from 'lucide-react';
 import './App.css';
 import './index.css';
 import { useCallback } from 'react';
@@ -11,11 +11,22 @@ import CompressPdf from './components/CompressPdf';
 import MergePdf from './components/MergePdf';
 import SplitPdf from './components/SplitPdf';
 import PdfToImage from './components/PdfToImage';
+import BuyMeCoffee from './components/BuyMeCoffee';
 
 function MainGrid() {
   const navigate = useNavigate();
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-2 sm:px-6 py-6">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-2 sm:px-6 py-6 relative w-full">
+      {/* Buy Me a Coffee button top right (internal navigation) */}
+      <button
+        onClick={() => navigate('/buy-me-coffee')}
+        className="fixed top-4 right-4 z-50 flex items-center gap-2 px-4 py-2 bg-yellow-400 text-brown-900 rounded-full shadow-lg hover:bg-yellow-300 transition"
+        style={{ textDecoration: 'none' }}
+        aria-label="Buy me a coffee"
+      >
+        <Coffee size={22} className="text-brown-900" />
+        <span className="font-semibold">Buy me a coffee</span>
+      </button>
       {/* Doc Utility Icon */}
       <div className="mb-6 flex items-center justify-center">
         <span className="inline-flex items-center justify-center bg-blue-100 rounded-full p-4 shadow">
@@ -81,6 +92,13 @@ function MainGrid() {
           <Image size={56} className="mb-4 text-lime-600" />
           <span className="text-xl font-semibold">PDF to Images</span>
         </div>
+        <div
+          className="cursor-pointer bg-white rounded-lg shadow-md p-8 sm:p-10 flex flex-col items-center hover:bg-amber-50 transition min-h-[200px]"
+          onClick={() => navigate('/buy-me-coffee')}
+        >
+          <Coffee size={56} className="mb-4 text-yellow-600" />
+          <span className="text-xl font-semibold">Buy me a coffee</span>
+        </div>
       </div>
     </div>
   );
@@ -99,6 +117,7 @@ function App() {
         <Route path="/merge-pdf" element={<MergePdf />} />
         <Route path="/split-pdf" element={<SplitPdf />} />
         <Route path="/pdf-to-images" element={<PdfToImage />} />
+        <Route path="/buy-me-coffee" element={<BuyMeCoffee />} />
       </Routes>
     </Router>
   );
