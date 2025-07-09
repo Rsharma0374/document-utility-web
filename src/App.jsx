@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import { FileText, Lock, Unlock, Wrench } from 'lucide-react';
+import { FileText, Lock, Unlock, Wrench, Image, Combine, Split, Minimize2 } from 'lucide-react';
 import './App.css';
 import './index.css';
 import { useCallback } from 'react';
@@ -9,6 +9,8 @@ import Base64ToPdf from './components/Base64ToPdf';
 import PdfToBase64 from './components/PdfToBase64';
 import CompressPdf from './components/CompressPdf';
 import MergePdf from './components/MergePdf';
+import SplitPdf from './components/SplitPdf';
+import PdfToImage from './components/PdfToImage';
 
 function MainGrid() {
   const navigate = useNavigate();
@@ -55,15 +57,29 @@ function MainGrid() {
           className="cursor-pointer bg-white rounded-lg shadow-md p-8 sm:p-10 flex flex-col items-center hover:bg-red-50 transition min-h-[200px]"
           onClick={() => navigate('/compress-pdf')}
         >
-          <FileText size={56} className="mb-4 text-red-600" />
+          <Minimize2 size={56} className="mb-4 text-red-600" />
           <span className="text-xl font-semibold">Compress PDF</span>
         </div>
         <div
           className="cursor-pointer bg-white rounded-lg shadow-md p-8 sm:p-10 flex flex-col items-center hover:bg-indigo-50 transition min-h-[200px]"
           onClick={() => navigate('/merge-pdf')}
         >
-          <FileText size={56} className="mb-4 text-indigo-600" />
+          <Combine size={56} className="mb-4 text-indigo-600" />
           <span className="text-xl font-semibold">Merge PDFs</span>
+        </div>
+        <div
+          className="cursor-pointer bg-white rounded-lg shadow-md p-8 sm:p-10 flex flex-col items-center hover:bg-pink-50 transition min-h-[200px]"
+          onClick={() => navigate('/split-pdf')}
+        >
+          <Split size={56} className="mb-4 text-pink-600" />
+          <span className="text-xl font-semibold">Split PDF</span>
+        </div>
+        <div
+          className="cursor-pointer bg-white rounded-lg shadow-md p-8 sm:p-10 flex flex-col items-center hover:bg-lime-50 transition min-h-[200px]"
+          onClick={() => navigate('/pdf-to-images')}
+        >
+          <Image size={56} className="mb-4 text-lime-600" />
+          <span className="text-xl font-semibold">PDF to Images</span>
         </div>
       </div>
     </div>
@@ -81,6 +97,8 @@ function App() {
         <Route path="/pdf-to-base64" element={<PdfToBase64 />} />
         <Route path="/compress-pdf" element={<CompressPdf />} />
         <Route path="/merge-pdf" element={<MergePdf />} />
+        <Route path="/split-pdf" element={<SplitPdf />} />
+        <Route path="/pdf-to-images" element={<PdfToImage />} />
       </Routes>
     </Router>
   );
