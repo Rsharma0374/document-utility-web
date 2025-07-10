@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import { FileText, Lock, Unlock, Wrench, Image, Combine, Split, Minimize2, Coffee, Info } from 'lucide-react';
 import './App.css';
 import './index.css';
-import { useCallback } from 'react';
 import PdfLock from './components/PdfLock';
 import PdfUnlock from './components/PdfUnlock';
 import Base64ToPdf from './components/Base64ToPdf';
@@ -37,6 +36,8 @@ function MainGrid() {
         </span>
       </div>
       <h1 className="text-3xl sm:text-4xl font-bold mb-10">Document Utility</h1>
+      {/* Main grid heading */}
+      <h2 className="text-2xl font-semibold mb-6 text-blue-700 text-center">PDF Tools</h2>
       {/* Main grid of tools */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 tall-or-wide:grid-cols-1 gap-8 w-full max-w-4xl">
         <div
@@ -44,63 +45,63 @@ function MainGrid() {
           onClick={() => navigate('/lock')}
         >
           <Lock size={56} className="mb-4 text-blue-600" />
-          <span className="text-xl font-semibold">Lock PDF</span>
+          <h3 className="text-xl font-semibold">Lock PDF</h3>
         </div>
         <div
           className="cursor-pointer bg-white rounded-lg shadow-md p-8 sm:p-10 flex flex-col items-center hover:bg-green-50 transition min-h-[200px]"
           onClick={() => navigate('/unlock')}
         >
           <Unlock size={56} className="mb-4 text-green-600" />
-          <span className="text-xl font-semibold">Unlock PDF</span>
+          <h3 className="text-xl font-semibold">Unlock PDF</h3>
         </div>
         <div
           className="cursor-pointer bg-white rounded-lg shadow-md p-8 sm:p-10 flex flex-col items-center hover:bg-yellow-50 transition min-h-[200px]"
           onClick={() => navigate('/base64-to-pdf')}
         >
           <FileText size={56} className="mb-4 text-yellow-600" />
-          <span className="text-xl font-semibold">Base64 to PDF</span>
+          <h3 className="text-xl font-semibold">Base64 to PDF</h3>
         </div>
         <div
           className="cursor-pointer bg-white rounded-lg shadow-md p-8 sm:p-10 flex flex-col items-center hover:bg-purple-50 transition min-h-[200px]"
           onClick={() => navigate('/pdf-to-base64')}
         >
           <FileText size={56} className="mb-4 text-purple-600" />
-          <span className="text-xl font-semibold">PDF to Base64</span>
+          <h3 className="text-xl font-semibold">PDF to Base64</h3>
         </div>
         <div
           className="cursor-pointer bg-white rounded-lg shadow-md p-8 sm:p-10 flex flex-col items-center hover:bg-red-50 transition min-h-[200px]"
           onClick={() => navigate('/compress-pdf')}
         >
           <Minimize2 size={56} className="mb-4 text-red-600" />
-          <span className="text-xl font-semibold">Compress PDF</span>
+          <h3 className="text-xl font-semibold">Compress PDF</h3>
         </div>
         <div
           className="cursor-pointer bg-white rounded-lg shadow-md p-8 sm:p-10 flex flex-col items-center hover:bg-indigo-50 transition min-h-[200px]"
           onClick={() => navigate('/merge-pdf')}
         >
           <Combine size={56} className="mb-4 text-indigo-600" />
-          <span className="text-xl font-semibold">Merge PDFs</span>
+          <h3 className="text-xl font-semibold">Merge PDFs</h3>
         </div>
         <div
           className="cursor-pointer bg-white rounded-lg shadow-md p-8 sm:p-10 flex flex-col items-center hover:bg-pink-50 transition min-h-[200px]"
           onClick={() => navigate('/split-pdf')}
         >
           <Split size={56} className="mb-4 text-pink-600" />
-          <span className="text-xl font-semibold">Split PDF</span>
+          <h3 className="text-xl font-semibold">Split PDF</h3>
         </div>
         <div
           className="cursor-pointer bg-white rounded-lg shadow-md p-8 sm:p-10 flex flex-col items-center hover:bg-lime-50 transition min-h-[200px]"
           onClick={() => navigate('/pdf-to-images')}
         >
           <Image size={56} className="mb-4 text-lime-600" />
-          <span className="text-xl font-semibold">PDF to Images</span>
+          <h3 className="text-xl font-semibold">PDF to Images</h3>
         </div>
         <div
           className="cursor-pointer bg-white rounded-lg shadow-md p-8 sm:p-10 flex flex-col items-center hover:bg-amber-50 transition min-h-[200px]"
           onClick={() => navigate('/buy-me-coffee')}
         >
           <Coffee size={56} className="mb-4 text-yellow-600" />
-          <span className="text-xl font-semibold">Buy me a coffee</span>
+          <h3 className="text-xl font-semibold">Buy me a coffee</h3>
         </div>
       </div>
       {/* About link at the bottom */}
