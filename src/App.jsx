@@ -35,9 +35,9 @@ function MainGrid() {
           <Wrench size={20} className="text-blue-400 -ml-2" />
         </span>
       </div>
-      <h1 className="text-3xl sm:text-4xl font-bold mb-10">Document Utility</h1>
+      <h1 className="text-3xl sm:text-4xl font-bold mb-10">Document Utility – Free Online PDF Tools</h1>
       {/* Main grid heading */}
-      <h2 className="text-2xl font-semibold mb-6 text-blue-700 text-center">PDF Tools</h2>
+      <h2 className="text-2xl font-semibold mb-6 text-blue-700 text-center">PDF Tools: Merge, Split, Compress, Convert & More</h2>
       {/* Main grid of tools */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 tall-or-wide:grid-cols-1 gap-8 w-full max-w-4xl">
         <div
