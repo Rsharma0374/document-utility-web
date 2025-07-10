@@ -12,6 +12,7 @@ import MergePdf from './components/MergePdf';
 import SplitPdf from './components/SplitPdf';
 import PdfToImage from './components/PdfToImage';
 import BuyMeCoffee from './components/BuyMeCoffee';
+import NotFound from './components/NotFound';
 
 function MainGrid() {
   const navigate = useNavigate();
@@ -118,6 +119,7 @@ function App() {
         <Route path="/split-pdf" element={<SplitPdf />} />
         <Route path="/pdf-to-images" element={<PdfToImage />} />
         <Route path="/buy-me-coffee" element={<BuyMeCoffee />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
