@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://docutil.guardianservices.in/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://docutil.guardianservices.in/merge</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://docutil.guardianservices.in/split</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://docutil.guardianservices.in/compress</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://docutil.guardianservices.in/lock</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://docutil.guardianservices.in/unlock</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://docutil.guardianservices.in/pdf-to-image</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://docutil.guardianservices.in/pdf-to-base64</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://docutil.guardianservices.in/base64-to-pdf</loc>
+    <priority>0.7</priority>
+  </url>
+  <!-- Add more URLs as needed -->
+</urlset>
