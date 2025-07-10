@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import { FileText, Lock, Unlock, Wrench, Image, Combine, Split, Minimize2, Coffee } from 'lucide-react';
+import { FileText, Lock, Unlock, Wrench, Image, Combine, Split, Minimize2, Coffee, Info } from 'lucide-react';
 import './App.css';
 import './index.css';
 import { useCallback } from 'react';
@@ -13,6 +13,7 @@ import SplitPdf from './components/SplitPdf';
 import PdfToImage from './components/PdfToImage';
 import BuyMeCoffee from './components/BuyMeCoffee';
 import NotFound from './components/NotFound';
+import HomeContent from './components/HomeContent';
 
 function MainGrid() {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ function MainGrid() {
         </span>
       </div>
       <h1 className="text-3xl sm:text-4xl font-bold mb-10">Document Utility</h1>
+      {/* Main grid of tools */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 tall-or-wide:grid-cols-1 gap-8 w-full max-w-4xl">
         <div
           className="cursor-pointer bg-white rounded-lg shadow-md p-8 sm:p-10 flex flex-col items-center hover:bg-blue-50 transition min-h-[200px]"
@@ -101,6 +103,16 @@ function MainGrid() {
           <span className="text-xl font-semibold">Buy me a coffee</span>
         </div>
       </div>
+      {/* About link at the bottom */}
+      <div className="mt-10 text-center">
+        <button
+          onClick={() => navigate('/about')}
+          className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 hover:scale-105 transition-all font-semibold text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-blue-400 animate-pulse"
+        >
+          <Info size={22} className="text-white" />
+          About this site
+        </button>
+      </div>
     </div>
   );
 }
@@ -119,6 +131,7 @@ function App() {
         <Route path="/split-pdf" element={<SplitPdf />} />
         <Route path="/pdf-to-images" element={<PdfToImage />} />
         <Route path="/buy-me-coffee" element={<BuyMeCoffee />} />
+        <Route path="/about" element={<HomeContent />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
