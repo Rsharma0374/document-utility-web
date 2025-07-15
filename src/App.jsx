@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import { FileText, Lock, Unlock, Wrench, Image, Combine, Split, Minimize2, Coffee, Info } from 'lucide-react';
 import './App.css';
 import './index.css';
+import { useCallback, useEffect } from 'react';
 import PdfLock from './components/PdfLock';
 import PdfUnlock from './components/PdfUnlock';
 import Base64ToPdf from './components/Base64ToPdf';
@@ -119,6 +120,10 @@ function MainGrid() {
 }
 
 function App() {
+  useEffect(() => {
+    sessionStorage.clear();
+  }, []);
+
   return (
     <Router>
       <Routes>
