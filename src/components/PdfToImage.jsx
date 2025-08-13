@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Home, Image } from 'lucide-react';
+import { uploadPdfForImageConversion, listenForImageResult } from '../services/pdfToImageAsyncService';
 
 const API_URL = import.meta.env.VITE_API_URL;
 const FORMATS = ["PNG", "JPEG", "JPG", "GIF", "BMP"];
@@ -13,6 +14,8 @@ export default function PdfToImage() {
   const [success, setSuccess] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState(null);
   const [downloadName, setDownloadName] = useState('');
+  const [waiting, setWaiting] = useState(false);
+  const [ws, setWs] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -22,41 +25,38 @@ export default function PdfToImage() {
     setSuccess(false);
     setDownloadUrl(null);
     setDownloadName('');
+    setWaiting(false);
+    if (ws) {
+      ws.close();
+      setWs(null);
+    }
     try {
-      const formData = new FormData();
-      formData.append('file', file);
-      formData.append('format', format);
-      const response = await fetch(`${API_URL}/doc-service/pdf/to-images`, {
-        method: 'POST',
-        body: formData,
-      });
-      if (!response.ok) {
-        let errorMsg = 'Failed to convert PDF to images';
-        try {
-          const data = await response.json();
-          if (data && data.error) {
-            errorMsg = data.error;
-          }
-        } catch (e) {}
-        throw new Error(errorMsg);
-      }
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      let filename = 'images.zip';
-      const disposition = response.headers.get('Content-Disposition');
-      if (disposition && disposition.includes('filename=')) {
-        const match = disposition.match(/filename="?([^";]+)"?/);
-        if (match && match[1]) {
-          filename = match[1];
+      // Call async API
+      const jobId  = await uploadPdfForImageConversion(file, format);
+      if (!jobId) throw new Error('No jobId returned from server');
+      setWaiting(true);
+      // Listen for result via WebSocket
+      const socket = listenForImageResult(
+        jobId,
+        (result) => {
+          // Assume result is a URL to the zip file
+          setDownloadUrl(result);
+          setDownloadName('images.zip');
+          setSuccess(true);
+          setWaiting(false);
+          setLoading(false);
+        },
+        (err) => {
+          setError('WebSocket error: ' + (err?.message || err));
+          setWaiting(false);
+          setLoading(false);
         }
-      }
-      setDownloadUrl(url);
-      setDownloadName(filename);
-      setSuccess(true);
+      );
+      setWs(socket);
     } catch (err) {
       setError(err.message || 'Something went wrong');
-    } finally {
       setLoading(false);
+      setWaiting(false);
     }
   };
 
@@ -111,6 +111,9 @@ export default function PdfToImage() {
           >
             Download Images
           </a>
+        )}
+        {waiting && !success && (
+          <div className="text-blue-600 text-sm mt-2">Waiting for conversion result...</div>
         )}
       </form>
       <div className="text-xs text-gray-600 bg-gray-100 rounded p-2 mt-4 max-w-md">

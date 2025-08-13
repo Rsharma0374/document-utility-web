@@ -169,15 +169,22 @@ export default function BuyMeCoffee() {
               <option value="10">☕☕☕ 3 Coffees - ₹150</option>
               <option value="20">☕☕☕☕ 4 Coffees - ₹200</option>
             </select>
-            <button
+            {/* <button
               type="submit"
               className="mt-2 px-4 py-2 bg-yellow-400 text-brown-900 rounded-full shadow-lg hover:bg-yellow-300 transition font-semibold text-lg disabled:opacity-50"
               disabled={loading}
-            >
-              {loading ? 'Processing...' : `Buy me a coffee - ₹${amountMap[amount].value}`}
-            </button>
-            {error && <div className="text-red-600 text-sm mt-2">{error}</div>}
-          </form>
+              >
+                {loading ? 'Processing...' : `Buy me a coffee - ₹${amountMap[amount].value}`}
+              </button> */}
+              <button
+                type="button"
+                className="mt-2 px-4 py-2 bg-yellow-400 text-brown-900 rounded-full shadow-lg hover:bg-yellow-300 transition font-semibold text-lg opacity-60 cursor-not-allowed"
+                disabled
+              >
+                Coming soon
+              </button>
+              {error && <div className="text-red-600 text-sm mt-2">{error}</div>}
+            </form>
         )}
       </div>
     </div>
