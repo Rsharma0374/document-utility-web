@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileText, Lock, Unlock, Wrench, Image, Combine, Split, Minimize2, Coffee, ArrowLeftCircle } from 'lucide-react';
+import { FileText, Lock, Unlock, Wrench, Image, Combine, Split, Minimize2, Coffee, ArrowLeftCircle, Home } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export default function HomeContent() {
@@ -7,7 +7,18 @@ export default function HomeContent() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-yellow-100 via-blue-50 to-pink-100 px-4 py-10">
 
+      {/* Home button in top left */}
+      <button
+        className="fixed top-4 left-4 z-50 flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition"
+        onClick={() => navigate('/')}
+        aria-label="Home"
+      >
+        <Home size={20} />
+        <span className="hidden sm:inline">Home</span>
+      </button>
+
       <div className="max-w-3xl w-full bg-white rounded-2xl shadow-2xl p-8 mb-8 border border-blue-100">
+        
         <h2 className="text-3xl font-extrabold mb-4 text-blue-800 flex items-center gap-2">
           <FileText className="inline-block text-yellow-500" size={32} />
           Welcome to Document Utility – Your All-in-One PDF Tool
